@@ -425,7 +425,65 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
           }
         });
     }
+    var lastNotificationTime = 0;
 
+    function getNotification() {
+      // Check if the browser supports notifications
+      if (!("Notification" in window)) {
+        $('body').append('<h4 style="color:red">*Browser does not support Web Notification</h4>');
+        return;
+      }
+
+      // If permission is not granted, request it
+      if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+      } else {
+        // Get the current time
+        var currentTime = Date.now();
+
+        // Check if 2 minutes have passed since the last notification
+        if (currentTime - lastNotificationTime >= 120000) { // 120000 ms = 2 minutes
+          $.ajax({
+            url: "fetch_notification.php",
+            type: "POST",
+            success: function(response) {
+              if (response.result === true) {
+                var notificationDetails = response.notifications;
+                for (var i = notificationDetails.length - 1; i >= 0; i--) {
+                  var notificationUrl = notificationDetails[i]['url'];
+                  var notificationObj = new Notification(notificationDetails[i]['prod_name'], {
+                    body: notificationDetails[i]['message'],
+                  });
+
+                  // Set up notification click behavior
+                  notificationObj.onclick = function() {
+                    window.open(notificationUrl);
+                    notificationObj.close();
+                  };
+
+                  // Close the notification after 5 seconds
+                  setTimeout(function() {
+                    notificationObj.close();
+                  }, 5000);
+
+                  // Update the last notification time
+                  lastNotificationTime = currentTime;
+                  break; // Stop once we have sent one notification
+                }
+              }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.error("Error fetching notifications", textStatus, errorThrown);
+            }
+          });
+        }
+      }
+    }
+    getNotification();
+    setInterval(function() {
+      getNotification();
+    }, 20000);
+    // Call the notification function every 2 minutes
     document.addEventListener("DOMContentLoaded", () => loadNotifications());
   </script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

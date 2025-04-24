@@ -56,7 +56,7 @@ try {
             'status'        => $row['status'],
             'created_at'    => $row['created_at'],
             'prod_name'     => $row['prod_name'] ?: 'Product Notification',
-            'profile_image' => $row['profile_image'] ?: 'https://localhost/ecom-V6/uploads/cignal.jpg',
+            'profile_image' => $row['profile_image'] ?: 'https://localhost/ecom-V6/img/Profile.jpg',
             'url'           => 'https://localhost/ecom-V6/seller_transaction.php?id=' . $row['addcart_id'] // optional
         ];
     }
@@ -65,7 +65,7 @@ try {
     echo json_encode([
         'result'        => true,
         'unread_count'  => $unread_count,
-        'notifications'         => $notifications
+        'notifications' => $notifications
     ]);
 } catch (Exception $e) {
     echo json_encode([

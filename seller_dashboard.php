@@ -78,7 +78,19 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   <link rel="stylesheet" href="asset/fonts/material.css">
   <link rel="stylesheet" href="asset/css/style.css" id="main-style-link">
   <link rel="stylesheet" href="asset/css/style-preset.css">
-
+  <link rel="stylesheet" href="asset/css/style.css">
+  <style>
+    .modal1 {
+      display: block !important;
+      /* just for testing */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 
 <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
@@ -204,12 +216,11 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
                   </select>
                 </li>
                 <li class="nav-item">
-                  <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addproduct">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct">
                     + Add product
                   </button>
                 </li>
               </ul>
-              <!-- Links -->
 
               <!-- Search Form -->
               <form class="form-inline ml-auto">
@@ -249,13 +260,13 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     <?php while ($row = $result->fetch_assoc()): ?>
       <?php $modalId = "productModal" . $row['prod_id'];
       ?>
-      <div class="modal fade" id="<?= $modalId; ?>" tabindex="1" role="dialog" aria-labelledby="updateProductLabel" aria-hidden="true">
+      <div class="modal fade" id="<?= $modalId; ?>" tabindex="1">
         <div class="modal-dialog" role="document">
           <form method="POST" action="seller_update_product.php">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="updateProductLabel">Update Product</h5>
-                <button type="button" class="close" data-mdb-dismiss="modal" aria-label="Close">
+                <button type="button" class="close btn" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -280,7 +291,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Update Product</button>
-                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
               </div>
             </div>
           </form>
@@ -291,14 +302,16 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     <p class="text-center">No products available.</p>
   <?php endif;
   $conn->close();
-
   ?>
+
+
   <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add Items to Sell</h5>
-          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
@@ -307,6 +320,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
               <label for="prod_name">Product Name</label>
               <input type="text" name="prod_name" class="form-control" required>
             </div>
+
             <div class="form-group">
               <label for="prod_price">Price</label>
               <input type="number" name="prod_price" class="form-control" required>
@@ -331,14 +345,17 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+    <!-- Product Item -->
+
+
   </div>
   <!-- JQuery -->
+
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 
 
   <script>
@@ -385,16 +402,12 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   </script>
   <?php include("customer_footer.php") ?>
 
-
   <script>
     function loadNotifications(all = false) {
       const url = all ?
         'fetch_notification.php?all=1' :
         'fetch_notification.php';
-      getNotification();
-      setInterval(function() {
-        getNotification();
-      }, 20000);
+
       fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -440,41 +453,68 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         });
     }
 
+    // Variable to track the last time a notification was shown
+    var lastNotificationTime = 0;
+
     function getNotification() {
-      if (!Notification) {
+      // Check if the browser supports notifications
+      if (!("Notification" in window)) {
         $('body').append('<h4 style="color:red">*Browser does not support Web Notification</h4>');
         return;
       }
+
+      // If permission is not granted, request it
       if (Notification.permission !== "granted") {
         Notification.requestPermission();
       } else {
-        $.ajax({
-          url: "fetch_notification.php",
-          type: "POST",
-          success: function(response, textStatus, jqXHR) {
-            console.log(response);
-            if (response.result == true) {
-              var notificationDetails = response.notifications;
-              for (var i = notificationDetails.length - 1; i >= 0; i--) {
-                var notificationUrl = notificationDetails[i]['url'];
-                var notificationObj = new Notification(notificationDetails[i]['prod_name'], {
-                  icon: notificationDetails[i]['profile_image'],
-                  body: notificationDetails[i]['message'],
-                });
-                notificationObj.onclick = function() {
-                  window.open(notificationUrl);
-                  notificationObj.close();
-                };
-                setTimeout(function() {
-                  notificationObj.close();
-                }, 1115000);
-              };
-            } else {}
-          },
-          error: function(jqXHR, textStatus, errorThrown) {}
-        });
+        // Get the current time
+        var currentTime = Date.now();
+
+        // Check if 2 minutes have passed since the last notification
+        if (currentTime - lastNotificationTime >= 120000) { // 120000 ms = 2 minutes
+          $.ajax({
+            url: "fetch_notification.php",
+            type: "POST",
+            success: function(response) {
+              if (response.result === true) {
+                var notificationDetails = response.notifications;
+                for (var i = notificationDetails.length - 1; i >= 0; i--) {
+                  var notificationUrl = notificationDetails[i]['url'];
+                  var notificationObj = new Notification(notificationDetails[i]['prod_name'], {
+                    body: notificationDetails[i]['message'],
+                  });
+
+                  // Set up notification click behavior
+                  notificationObj.onclick = function() {
+                    window.open(notificationUrl);
+                    notificationObj.close();
+                  };
+
+                  // Close the notification after 5 seconds
+                  setTimeout(function() {
+                    notificationObj.close();
+                  }, 5000);
+
+                  // Update the last notification time
+                  lastNotificationTime = currentTime;
+                  break; // Stop once we have sent one notification
+                }
+              }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.error("Error fetching notifications", textStatus, errorThrown);
+            }
+          });
+        }
       }
-    };
+    }
+    getNotification();
+    setInterval(function() {
+      getNotification();
+    }, 20000);
+    // Call the notification function every 2 minutes
+
+
     document.addEventListener("DOMContentLoaded", () => loadNotifications());
   </script>
 
@@ -485,7 +525,9 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   <script src="asset/js/plugins/bootstrap.min.js"></script>
   <script src="asset/js/fonts/custom-font.js"></script>
   <script src="asset/js/pcoded.js"></script>
+  <script src="asset/js/component.js"></script>
   <script src="asset/js/plugins/feather.min.js"></script>
+
   <script>
     layout_change('light');
   </script>
@@ -501,6 +543,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   <script>
     font_change("Public-Sans");
   </script>
+
 
 </body>
 
