@@ -139,7 +139,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
 
             <!--First slide-->
             <div class="carousel-item active">
-                <div class="view" style="background-image: url('img/product/Yoga\ 7\ 2-in-1\ 14\'Gen\ 9.png'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('img/carousel1.png'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -171,7 +171,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
 
             <!--Second slide-->
             <div class="carousel-item">
-                <div class="view" style="background-image: url('img/product/Lenovo\ LOQ\ 15AHP9.png'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('img/carousel2.png'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -203,7 +203,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
 
             <!--Third slide-->
             <div class="carousel-item">
-                <div class="view" style="background-image: url('img/product/IdeaPadSlim1i15Gen\ 7.png'); background-repeat: no-repeat; background-size: cover;">
+                <div class="view" style="background-image: url('img/carousel3.png'); background-repeat: no-repeat; background-size: cover;">
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -255,19 +255,10 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
         <div class="container">
             <!--Navbar-->
             <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
-
                 <!-- Navbar brand -->
                 <span class="navbar-brand">Categories:</span>
-
-                <!-- Collapse button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <!-- Collapsible content -->
                 <div class="collapse navbar-collapse" id="basicExampleNav">
-
                     <!-- Links -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
@@ -296,13 +287,10 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
 
                 </div>
                 <!-- Collapsible content -->
-
             </nav>
             <!--/.Navbar-->
             <div id="productContainer"></div>
-
         </div>
-
     </main>
     <!--Main layout-->
 

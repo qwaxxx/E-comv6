@@ -79,6 +79,11 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   <link rel="stylesheet" href="asset/css/style.css" id="main-style-link">
   <link rel="stylesheet" href="asset/css/style-preset.css">
   <link rel="stylesheet" href="asset/css/style.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.min.css" rel="stylesheet">
   <style>
     .modal1 {
       display: block !important;
@@ -180,64 +185,53 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
             </div>
           </div>
         </div>
-        <!-- [ sample-page ] end -->
+      </div>
 
-        <div class="col-12">
+      <!-- [ sample-page ] end -->
 
-          <!-- Navbar -->
-          <nav class="navbar navbar-expand-sm navbar-dark lighten-3 mt-3 mb-5">
+      <div class="container">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
-            <!-- Navbar brand -->
-            <span class="navbar-brand">Categories:</span>
+          <span class="navbar-brand">Categories:</span>
 
-            <!-- Collapse button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-              aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <!-- Collapsible content -->
-            <div class="collapse navbar-collapse" id="basicExampleNav">
+          <div class="collapse navbar-collapse" id="basicExampleNav">
 
-              <!-- Links -->
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" id="showAll" href="#">All
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <select class="form-control nav-link lighten-3" name="price_range" id="price_range" style="color:aqua;height:42px;margin-left:2px">
-                    <option value="">Select price range</option>
-                    <option value="0-10000">₱0 - ₱10000</option>
-                    <option value="10001-20000">₱10001 - ₱20000</option>
-                    <option value="20001-30000">₱20001 - ₱30000</option>
-                    <option value="30001-130000">₱30001 - ₱130000</option>
-                  </select>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct">
-                    + Add product
-                  </button>
-                </li>
-              </ul>
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" id="showAll" href="#">All
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
 
-              <!-- Search Form -->
-              <form class="form-inline ml-auto">
-                <div class="md-form my-0">
-                  <input class="form-control form-control-sm" type="text" placeholder="Search" id="search" aria-label="Search">
-                </div>
-              </form>
-            </div>
-            <!-- Collapsible content -->
+              <li class="nav-item">
+                <select class="form-control nav-link lighten-3" name="price_range" id="price_range" style="color:aqua;height:42px;margin-left:2px">
+                  <option value="">Select price range</option>
+                  <option value="0-10000">₱0 - ₱10000</option>
+                  <option value="10001-20000">₱10001 - ₱20000</option>
+                  <option value="20001-30000">₱20001 - ₱30000</option>
+                  <option value="30001-130000">₱30001 - ₱130000</option>
+                </select>
+              </li>
 
-          </nav>
-          <!--/.Navbar-->
+            </ul>
+            <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct">+ Add product
+              <span class="sr-only">+ Add product</span>
+            </a>
+            <form class="form-inline ml-auto">
+              <div class="md-form my-0">
+                <input class="form-control form-control-sm" type="text" placeholder="Search" id="search" aria-label="Search">
+              </div>
+            </form>
+          </div>
+        </nav>
 
-          <!-- Product Container -->
-          <div id="productContainer"></div>
-
-        </div>
+        <div id="productContainer"></div>
       </div>
 
       <!-- Pagination -->
@@ -527,7 +521,12 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   <script src="asset/js/pcoded.js"></script>
   <script src="asset/js/component.js"></script>
   <script src="asset/js/plugins/feather.min.js"></script>
-
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
   <script>
     layout_change('light');
   </script>

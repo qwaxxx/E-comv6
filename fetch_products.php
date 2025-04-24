@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
         $modalId = "productModal" . $row['prod_id'];
         echo '
         <div class="col-lg-3 col-md-6 mb-4 d-flex">
-            <div class="card h-100 w-100" data-bs-toggle="modal" data-bs-target="#' . $modalId . '" style="cursor:pointer;">
+            <div class="card h-100 w-100" data-toggle="modal" data-target="#' . $modalId . '" style="cursor:pointer;">
                 <div class="view overlay">
                     <img src="' . $row['prod_picture'] . '" class="card-img-top" alt="">
                 </div>

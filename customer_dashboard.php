@@ -137,7 +137,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
               <div class="table-responsive table-responsive-md">
 
                 <table id="ordersTable" class="table table-striped mb-0">
-                  <thead style="">
+                  <thead>
                     <tr style="cursor: pointer;">
                       <th onclick="sortTable(0)">Date/Time <span class="sort-indicator"></span></th>
                       <th onclick="sortTable(1)">Tracking ID <span class="sort-indicator"></span></th>
@@ -490,7 +490,6 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   </script>
 
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <script src="asset/js/plugins/apexcharts.min.js"></script>
   <script src="asset/js/pages/dashboard-default.js"></script>
