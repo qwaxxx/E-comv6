@@ -173,82 +173,75 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         <div class="col-12">
           <div class="card">
             <div class="card-body p-0">
-              <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
 
               <div class="container">
                 <div class="row justify-content-center mt-4">
-                  <div class="col-12">
-                    <div class="card">
-                      <div class="card-body p-0">
 
-                        <!-- Search Bar Aligned Right -->
-                        <div class="row mb-3">
-                          <div class="col-12 text-end pe-4 pt-3">
-                            <input type="text" id="searchInput" class="form-control form-control-sm w-auto d-inline-block" placeholder="Search orders..." onkeyup="searchTable()" />
-                          </div>
-                        </div>
 
-                        <!-- Table -->
-                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
-                          <table id="ordersTable" class="table table-striped mb-0">
-                            <thead>
-                              <tr style="cursor: pointer;">
-                                <th onclick="sortTable(0)">Date/Time <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(1)">Tracking ID<span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(2)">Customer Name<span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(3)">Block/Lot/Street/Village <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(4)">Baranggay <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(5)">City <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(6)">Province <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(7)">Country <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(8)">Parcel Quantity <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(9)">Total Amount <span class="sort-indicator"></span></th>
-                                <th onclick="sortTable(10)">Status <span class="sort-indicator"></span></th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody id="ordersBody">
-                            </tbody>
-                          </table>
-                        </div>
-
-                      </div>
-
-                      <!-- Pagination -->
-                      <div class="d-flex justify-content-center mt-3">
-                        <nav>
-                          <ul class="pagination" id="pagination"></ul>
-                        </nav>
-                      </div>
-
+                  <!-- Search Bar Aligned Right -->
+                  <div class="row mb-3">
+                    <div class="col-12 text-end pe-4 pt-3">
+                      <input type="text" id="searchInput" class="form-control form-control-sm w-auto d-inline-block" placeholder="Search orders..." onkeyup="searchTable()" />
                     </div>
                   </div>
+
+                  <!-- Table -->
+                  <div class="table-responsive table-responsive-md">
+                    <table id="ordersTable" class="table table-striped mb-0">
+                      <thead>
+                        <tr style="cursor: pointer;">
+                          <th onclick="sortTable(0)">Date/Time <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(1)">Tracking ID<span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(2)">Customer Name<span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(3)">Block/Lot/Street/Village <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(4)">Baranggay <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(5)">City <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(6)">Province <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(7)">Country <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(8)">Parcel Quantity <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(9)">Total Amount <span class="sort-indicator"></span></th>
+                          <th onclick="sortTable(10)">Status <span class="sort-indicator"></span></th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="ordersBody">
+                      </tbody>
+                    </table>
+                  </div>
+
                 </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-3">
+                  <nav>
+                    <ul class="pagination" id="pagination"></ul>
+                  </nav>
+                </div>
+
               </div>
 
 
 
-              </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-3">
-              <nav>
-                <ul class="pagination" id="pagination"></ul>
-              </nav>
             </div>
           </div>
+
+          <!-- Pagination -->
+          <div class="d-flex justify-content-center mt-3">
+            <nav>
+              <ul class="pagination" id="pagination"></ul>
+            </nav>
+          </div>
         </div>
-
-
       </div>
+
+
     </div>
+  </div>
   </div>
   <!-- [ Main Content ] end -->
 
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
   <?php include("admin_footer.php") ?>
   <script>
     let currentSortedColumn = -1;

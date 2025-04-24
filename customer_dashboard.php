@@ -130,10 +130,12 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         <div class="col-12">
           <div class="card">
             <div class="card-body p-0">
-              <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px;">
-                <div class="d-flex justify-content-end p-3">
-                  <input type="text" id="searchInput" class="form-control form-control-sm w-auto" placeholder="Search orders..." onkeyup="searchTable()" />
-                </div>
+
+              <div class="d-flex justify-content-end p-3">
+                <input type="text" id="searchInput" class="form-control form-control-sm w-auto" placeholder="Search orders..." onkeyup="searchTable()" />
+              </div>
+              <div class="table-responsive table-responsive-md">
+
                 <table id="ordersTable" class="table table-striped mb-0">
                   <thead style="">
                     <tr style="cursor: pointer;">
@@ -486,6 +488,8 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     // Call the notification function every 2 minutes
     document.addEventListener("DOMContentLoaded", () => loadNotifications());
   </script>
+
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <script src="asset/js/plugins/apexcharts.min.js"></script>

@@ -185,7 +185,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         <div class="col-12">
 
           <!-- Navbar -->
-          <nav class="navbar navbar-expand-sm navbar-dark mdb-color lighten-3 mt-3 mb-5">
+          <nav class="navbar navbar-expand-sm navbar-dark lighten-3 mt-3 mb-5">
 
             <!-- Navbar brand -->
             <span class="navbar-brand">Categories:</span>
@@ -207,7 +207,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
                   </a>
                 </li>
                 <li class="nav-item">
-                  <select class="form-control nav-link mdb-color lighten-3" name="price_range" id="price_range" style="color:aqua;height:42px;margin-left:2px">
+                  <select class="form-control nav-link lighten-3" name="price_range" id="price_range" style="color:aqua;height:42px;margin-left:2px">
                     <option value="">Select price range</option>
                     <option value="0-10000">₱0 - ₱10000</option>
                     <option value="10001-20000">₱10001 - ₱20000</option>
