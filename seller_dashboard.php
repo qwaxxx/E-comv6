@@ -120,29 +120,14 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         <!-- [ sample-page ] start -->
         <?php
         // Assuming you already have a $conn variable for the database connection
-        $totalUsers = $conn->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'];
-        $totalAddcarts = $conn->query("SELECT COUNT(*) as count FROM addcarts")->fetch_assoc()['count'];
-        $totalProducts = $conn->query("SELECT COUNT(*) as count FROM products")->fetch_assoc()['count'];
-        $totalNotifications = $conn->query("SELECT COUNT(*) as count FROM notifications")->fetch_assoc()['count'];
+        $totalAddcarts = $conn->query("SELECT COUNT(*) as count FROM addcarts where addcart_seller_id = $user_id")->fetch_assoc()['count'];
+        $totalProducts = $conn->query("SELECT COUNT(*) as count FROM products where prod_user_id = $user_id")->fetch_assoc()['count'];
+        $totalNotifications = $conn->query("SELECT COUNT(*) as count FROM notifications where user_id =$user_id")->fetch_assoc()['count'];
         ?>
 
-        <!-- Users -->
-        <div class="col-md-6 col-xl-3">
-          <div class="card text-white bg-info">
-            <div class="card-body d-flex align-items-center">
-              <div class="me-3">
-                <i class="fas fa-users fa-2x"></i>
-              </div>
-              <div>
-                <h6 class="mb-1 text-white-50">Total Users</h6>
-                <h4 class="mb-0"><?= number_format($totalUsers) ?></h4>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- Add to Carts -->
-        <div class="col-md-6 col-xl-3">
+        <div class="col-md-6 col-xl-4">
           <div class="card text-white bg-warning">
             <div class="card-body d-flex align-items-center">
               <div class="me-3">
@@ -157,7 +142,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         </div>
 
         <!-- Products -->
-        <div class="col-md-6 col-xl-3">
+        <div class="col-md-6 col-xl-4">
           <div class="card text-white bg-danger">
             <div class="card-body d-flex align-items-center">
               <div class="me-3">
@@ -172,7 +157,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         </div>
 
         <!-- Notifications -->
-        <div class="col-md-6 col-xl-3">
+        <div class="col-md-6 col-xl-4">
           <div class="card text-white bg-secondary">
             <div class="card-body d-flex align-items-center">
               <div class="me-3">
@@ -241,6 +226,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
         </nav>
       </div>
     </div>
+
   </div>
   <!-- [ Main Content ] end -->
 
