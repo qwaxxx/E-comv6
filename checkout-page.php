@@ -71,12 +71,12 @@ $total = 0;
                         $stmt->close();
                     ?>
                         <li class="nav-item d-flex align-items-center">
-                           <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm text-dark bg-light hover-effect" 
-                            href="customer_dashboard.php" style="text-decoration: none;">
-                            <i class="ti ti-layout-dashboard fs-5 text-primary"></i>
-                            <span class="fw-semibold">Dashboard</span>
+                            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm text-dark bg-light hover-effect"
+                                href="customer_dashboard.php" style="text-decoration: none;">
+                                <i class="ti ti-layout-dashboard fs-5 text-primary"></i>
+                                <span class="fw-semibold">Dashboard</span>
                             </a>
-                            
+
                             <a class="nav-link" href="logout.php">Logout</a>
                         </li>
 
@@ -246,7 +246,7 @@ $total = 0;
 
                             <input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">
 
-                            <a href="index.php" class="btn btn-secondary btn-lg btn-block mt-2">
+                            <a href="index.php" class="btn btn-secondary btn-lg btn-block-block mt-2">
                                 <i class="fas fa-arrow-left me-1"></i> Back to Shop
                             </a>
 
