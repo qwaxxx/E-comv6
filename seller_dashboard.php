@@ -322,7 +322,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     });
   </script>
   <?php include("seller_footer.php") ?>
- <script>
+  <script>
     let currentSortedColumn = -1;
     let currentSortDirection = "asc";
 
@@ -480,8 +480,8 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
 
 
     function downloadReceipt(row) {
-  const receiptContainer = document.createElement('div');
-  receiptContainer.innerHTML = `
+      const receiptContainer = document.createElement('div');
+      receiptContainer.innerHTML = `
     <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
       <h2 style="text-align: center;">Order Receipt</h2>
       <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
@@ -501,17 +501,23 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     </div>
   `;
 
-  // Generate and save PDF
-  html2pdf()
-    .from(receiptContainer)
-    .set({
-      margin: 10,
-      filename: `receipt-${row.addcart_id}.pdf`,
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    })
-    .save();
-}
+      // Generate and save PDF
+      html2pdf()
+        .from(receiptContainer)
+        .set({
+          margin: 10,
+          filename: `receipt-${row.addcart_id}.pdf`,
+          html2canvas: {
+            scale: 2
+          },
+          jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait'
+          }
+        })
+        .save();
+    }
 
 
     function searchTable() {
@@ -596,9 +602,10 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
   </script>
   <script>
     function loadNotifications(all = false) {
+      getNotification();
       const url = all ?
-        'seller_fetch_notification.php?all=1' :
-        'seller_fetch_notification.php';
+        'fetch_notification.php?all=1' :
+        'fetch_notification.php';
 
       fetch(url)
         .then(res => res.json())
@@ -647,7 +654,7 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
 
     // Example of your existing click‑handler
     function handleNotificationClick(notifId, orderId) {
-      fetch('seller_mark_notification_read.php', {
+      fetch('mark_notification_read.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -667,7 +674,64 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
           }
         });
     }
+    var lastNotificationTime = 0;
 
+    function getNotification() {
+      // Check if the browser supports notifications
+      if (!("Notification" in window)) {
+        $('body').append('<h4 style="color:red">*Browser does not support Web Notification</h4>');
+        return;
+      }
+
+      // If permission is not granted, request it
+      if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+      } else {
+        // Get the current time
+        var currentTime = Date.now();
+
+        // Check if 2 minutes have passed since the last notification
+        if (currentTime - lastNotificationTime >= 120000) { // 120000 ms = 2 minutes
+          $.ajax({
+            url: "fetch_notification.php",
+            type: "POST",
+            success: function(response) {
+              if (response.result === true) {
+                var notificationDetails = response.notifications;
+                for (var i = notificationDetails.length - 1; i >= 0; i--) {
+                  var notificationUrl = notificationDetails[i]['url'];
+                  var notificationObj = new Notification(notificationDetails[i]['prod_name'], {
+                    body: notificationDetails[i]['message'],
+                  });
+
+                  // Set up notification click behavior
+                  notificationObj.onclick = function() {
+                    window.open(notificationUrl);
+                    notificationObj.close();
+                  };
+
+                  // Close the notification after 5 seconds
+                  setTimeout(function() {
+                    notificationObj.close();
+                  }, 5000);
+
+                  // Update the last notification time
+                  lastNotificationTime = currentTime;
+                  break; // Stop once we have sent one notification
+                }
+              }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              console.error("Error fetching notifications", textStatus, errorThrown);
+            }
+          });
+        }
+      }
+    }
+
+    setInterval(function() {
+      getNotification();
+    }, 20000);
     document.addEventListener("DOMContentLoaded", () => loadNotifications());
   </script>
 

@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 
         // Secure reset link
         $safeEmail = urlencode($email);
-        $resetLink = "http://jecefi.com/mam/forgot_password_otp_confirm.php?token=$token&email=$safeEmail";
+        $resetLink = "https://jeffry-cabalog.eu5.org/forgot_password_otp_confirm.php?token=$token&email=$safeEmail";
 
         // Send email
         $mail = new PHPMailer(true);
