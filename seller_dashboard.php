@@ -513,18 +513,6 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     .save();
 }
 
-// Optional print preview
-const printWindow = window.open('', '_blank');
-printWindow.document.write(receiptContainer.innerHTML);
-printWindow.document.close();
-printWindow.focus();
-printWindow.print();
-printWindow.close();
-
-
-
-    
-    
 
     function searchTable() {
       const input = document.getElementById("searchInput");
@@ -609,8 +597,8 @@ printWindow.close();
   <script>
     function loadNotifications(all = false) {
       const url = all ?
-        'fetch_notification.php?all=1' :
-        'fetch_notification.php';
+        'seller_fetch_notification.php?all=1' :
+        'seller_fetch_notification.php';
 
       fetch(url)
         .then(res => res.json())
@@ -659,7 +647,7 @@ printWindow.close();
 
     // Example of your existing click‑handler
     function handleNotificationClick(notifId, orderId) {
-      fetch('mark_notification_read.php', {
+      fetch('seller_mark_notification_read.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

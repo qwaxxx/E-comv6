@@ -56,8 +56,8 @@ try {
             'status'        => $row['status'],
             'created_at'    => $row['created_at'],
             'prod_name'     => $row['prod_name'] ?: 'Product Notification',
-            'profile_image' => $row['profile_image'] ?: 'http://localhost/project\mam/img/Profile.jpg',
-            'url'           => 'http://localhost/project\mam/seller_transaction.php?id=' . $row['addcart_id'] // optional
+            'profile_image' => $row['profile_image'] ?: 'http://jecefi.com/mam/img/Profile.jpg',
+            'url'           => 'http://jecefi.com/mam/seller_transaction.php?id=' . $row['addcart_id'] // optional
         ];
     }
 

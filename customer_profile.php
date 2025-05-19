@@ -376,8 +376,8 @@ Swal.fire({
   <script>
     function loadNotifications(all = false) {
       const url = all ?
-        'fetch_notification.php?all=1' :
-        'fetch_notification.php';
+        'customer_fetch_notification.php?all=1' :
+        'customer_fetch_notification.php';
 
       fetch(url)
         .then(res => res.json())
@@ -426,7 +426,7 @@ Swal.fire({
 
     // Example of your existing click‑handler
     function handleNotificationClick(notifId, orderId) {
-      fetch('mark_notification_read.php', {
+      fetch('customer_mark_notification_read.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -465,7 +465,7 @@ Swal.fire({
         // Check if 2 minutes have passed since the last notification
         if (currentTime - lastNotificationTime >= 120000) { // 120000 ms = 2 minutes
           $.ajax({
-            url: "fetch_notification.php",
+            url: "customer_fetch_notification.php",
             type: "POST",
             success: function(response) {
               if (response.result === true) {
