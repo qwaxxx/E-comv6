@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 
         // Secure reset link
         $safeEmail = urlencode($email);
-        $resetLink = "https://localhost/e-commerce_jelai/forgot_password_otp_confirm.php?token=$token&email=$safeEmail";
+        $resetLink = "http://jecefi.com/mam/forgot_password_otp_confirm.php?token=$token&email=$safeEmail";
 
         // Send email
         $mail = new PHPMailer(true);
