@@ -102,7 +102,12 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['temp_id'])) {
                         $stmt->close();
                     ?>
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link" href="customer_dashboard.php"><span><?php echo htmlspecialchars($name); ?></span></a>
+                           <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm text-dark bg-light hover-effect" 
+                            href="customer_dashboard.php" style="text-decoration: none;">
+                            <i class="ti ti-layout-dashboard fs-5 text-primary"></i>
+                            <span class="fw-semibold">Dashboard</span>
+                            </a>
+
                             <a class="nav-link" href="logout.php">Logout</a>
                         </li>
 

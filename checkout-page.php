@@ -14,7 +14,7 @@ $total = 0;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap</title>
+    <title>Checkout</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -33,7 +33,7 @@ $total = 0;
 
             <!-- Brand -->
             <a class="navbar-brand waves-effect" href="index.php">
-                <strong class="blue-text">Lappy</strong>
+                <strong class="blue-text">E-commerce</strong>
             </a>
 
             <!-- Collapse -->
@@ -71,7 +71,12 @@ $total = 0;
                         $stmt->close();
                     ?>
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link" href="customer_dashboard.php"><span><?php echo htmlspecialchars($name); ?></span></a>
+                           <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm text-dark bg-light hover-effect" 
+                            href="customer_dashboard.php" style="text-decoration: none;">
+                            <i class="ti ti-layout-dashboard fs-5 text-primary"></i>
+                            <span class="fw-semibold">Dashboard</span>
+                            </a>
+                            
                             <a class="nav-link" href="logout.php">Logout</a>
                         </li>
 
@@ -95,7 +100,7 @@ $total = 0;
         <div class="container wow fadeIn">
 
             <!-- Heading -->
-            <h2 class="my-5 h2 text-center">Checkout form</h2>
+            <!-- <h2 class="my-5 h2 text-center">Checkout form</h2> -->
 
             <!--Grid row-->
             <div class="row">
@@ -238,7 +243,13 @@ $total = 0;
                             </div>
 
                             <hr class="mb-4">
+
                             <input class="btn btn-primary btn-lg btn-block" type="submit" value="Continue to checkout">
+
+                            <a href="index.php" class="btn btn-secondary btn-lg btn-block mt-2">
+                                <i class="fas fa-arrow-left me-1"></i> Back to Shop
+                            </a>
+
 
                         </form>
 
@@ -319,68 +330,6 @@ $total = 0;
         </div>
     </main>
     <!--Main layout-->
-
-    <!--Footer-->
-    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-        <!--Call to action-->
-        <div class="pt-4">
-            <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank" role="button">Download MDB
-                <i class="fas fa-download ml-2"></i>
-            </a>
-            <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start free tutorial
-                <i class="fas fa-graduation-cap ml-2"></i>
-            </a>
-        </div>
-        <!--/.Call to action-->
-
-        <hr class="my-4">
-
-        <!-- Social icons -->
-        <div class="pb-4">
-            <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-                <i class="fab fa-facebook-f mr-3"></i>
-            </a>
-
-            <a href="https://twitter.com/MDBootstrap" target="_blank">
-                <i class="fab fa-twitter mr-3"></i>
-            </a>
-
-            <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-                <i class="fab fa-youtube mr-3"></i>
-            </a>
-
-            <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-                <i class="fab fa-google-plus-g mr-3"></i>
-            </a>
-
-            <a href="https://dribbble.com/mdbootstrap" target="_blank">
-                <i class="fab fa-dribbble mr-3"></i>
-            </a>
-
-            <a href="https://pinterest.com/mdbootstrap" target="_blank">
-                <i class="fab fa-pinterest mr-3"></i>
-            </a>
-
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-                <i class="fab fa-github mr-3"></i>
-            </a>
-
-            <a href="http://codepen.io/mdbootstrap/" target="_blank">
-                <i class="fab fa-codepen mr-3"></i>
-            </a>
-        </div>
-        <!-- Social icons -->
-
-        <!--Copyright-->
-        <div class="footer-copyright py-3">
-            © 2019 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
