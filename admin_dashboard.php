@@ -503,13 +503,6 @@ $image_src = $profile_image ? 'img/' . $profile_image : 'https://via.placeholder
     .save();
 }
 
-// Optional print preview
-const printWindow = window.open('', '_blank');
-printWindow.document.write(receiptContainer.innerHTML);
-printWindow.document.close();
-printWindow.focus();
-printWindow.print();
-printWindow.close();
 
     function searchTable() {
       const input = document.getElementById("searchInput");

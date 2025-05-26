@@ -384,18 +384,6 @@ Swal.fire({
     .save();
 }
 
-// Optional print preview
-const printWindow = window.open('', '_blank');
-printWindow.document.write(receiptContainer.innerHTML);
-printWindow.document.close();
-printWindow.focus();
-printWindow.print();
-printWindow.close();
-
-
-
-    
-    
 
     function searchTable() {
       const input = document.getElementById("searchInput");
